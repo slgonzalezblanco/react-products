@@ -1,24 +1,32 @@
-import logo from './logo.svg';
+
+import { useState } from 'react';
 import './App.css';
 
+
+import { Products } from './componets/Products';
+import Lista from './pages/Lista';
+
+
 function App() {
+  const [myArrayText,setMyArrayText]= useState([{
+    id:1,
+    nombre:"Lapiz",
+    cantidad:5,
+  },{
+    id:2,
+    nombre:"Libro",
+    cantidad:1,
+  },{
+    id:3,
+    nombre:"Goma",
+    cantidad:2,
+  }])
+ 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+<Products.Provider value={{setMyArrayText, myArrayText}}>
+
+<Lista></Lista>
+</Products.Provider>
   );
 }
 
